@@ -13,7 +13,7 @@ export async function getFeaturedGame() {
 }
 
 export async function getDetailVoucher(id) {
-    const URL = `players/${id}/detailPage`;
+    const URL = `players/${id}/detail`;
 
     const response = await axios.get(`${ROOT_API}/${API_VERSION}/${URL}`);
     const axiosResponse = response.data;
