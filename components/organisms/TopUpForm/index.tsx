@@ -1,7 +1,8 @@
 import NominalItem from "./NominalItem"
 import PaymentItem from "./PaymentItem"
 
-export default function TopUpForm() {
+export default function TopUpForm(props) {
+    const {nominals, payments} = props;
     return (
         <form action="/#" method="POST">
                         <div className="pt-md-50 pt-30">
@@ -13,9 +14,14 @@ export default function TopUpForm() {
                         <div className="pt-md-50 pb-md-50 pt-30 pb-20">
                             <p className="text-lg fw-medium color-palette-1 mb-md-10 mb-0">Nominal Top Up</p>
                             <div className="row justify-content-between">
-                                <NominalItem _id="123" coinQuantity={20} coinName="GOLD" price={123}/>
-                                <NominalItem _id="124" coinQuantity={20} coinName="GOLD" price={123}/>
-                                <NominalItem _id="125" coinQuantity={20} coinName="GOLD" price={123}/>
+                                {nominals.map(nominal => {
+                                return <NominalItem 
+                                key={nominal._id}
+                                _id={nominal._id} 
+                                coinQuantity={nominal.coinQuantity} 
+                                coinName={nominal.coinName} 
+                                price={nominal.price}/>
+                                })}
                                 <div className="col-lg-4 col-sm-6">
                                 </div>
                             </div>
@@ -24,8 +30,12 @@ export default function TopUpForm() {
                             <p className="text-lg fw-medium color-palette-1 mb-md-10 mb-0">Payment Method</p>
                             <fieldset id="paymentMethod">
                                 <div className="row justify-content-between">
-                                    <PaymentItem bankID="126" type="Transfer" name="BCA"/>
-                                    <PaymentItem bankID="127" type="Transfer" name="Mandiri"/>
+                                    {payments.map((payment) => payment.banks.map((bank) => (
+                                            <PaymentItem 
+                                            bankID={bank._id} 
+                                            type={payment.type} 
+                                            name={bank.nameBank}/>
+                                    )))}
                                     <div className="col-lg-4 col-sm-6">
                                     </div>
                                 </div>
