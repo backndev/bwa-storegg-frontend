@@ -1,6 +1,6 @@
 import { useState } from "react";
 import cx from 'classnames';
-import classNames from "classnames";
+import className from "classnames";
 import { useRouter } from "next/dist/client/router";
 
 export default function SignUpForm() {
@@ -10,7 +10,9 @@ export default function SignUpForm() {
 
     const router = useRouter();
     const className = {
-        label: cx('form-label text-lg fw-medium color-palette-1 mb-10')
+        label: cx('form-label text-lg fw-medium color-palette-1 mb-10'),
+        text: cx('')
+
     };
 
     const onSubmit = () => {
