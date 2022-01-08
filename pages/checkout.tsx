@@ -1,5 +1,5 @@
 import CheckoutConfirmation from "../components/organisms/CheckoutConfimation";
-import CheckoutDetail from "../components/organisms/CheckoutDetail";
+import CheckoutDetail from '../components/organisms/CheckoutDetail';
 import CheckoutItem from "../components/organisms/CheckoutItem";
 // import Footer from "../components/organisms/Footer";
 // import Navbar from "../components/organisms/Navbar";
