@@ -30,11 +30,13 @@ export default function SignUpPhoto() {
 
     useEffect(() => {
         const getLocalForm = localStorage.getItem('user-form');
+        // @ts-ignore
         setLocalForm(JSON.parse(getLocalForm));
     }, []);
 
     const onSubmit = async () => {
         const getLocalForm = await localStorage.getItem('user-form')
+        // @ts-ignore
         const form = JSON.parse(getLocalForm);
         const data = new FormData();
 
@@ -57,6 +59,11 @@ export default function SignUpPhoto() {
             localStorage.removeItem('user-form');
         }
     }
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
     return (
         <section className="sign-up-photo mx-auto pt-lg-227 pb-lg-227 pt-130 pb-50">
         <div className="container mx-auto">
@@ -70,8 +77,11 @@ export default function SignUpPhoto() {
                                 </label>
                                 <input id="avatar" type="file" name="avatar" accept="image/png, image/jpeg"
                                 onChange={(event) => {
+                                    // @ts-ignore
                                     const img = event.target.files[0];
+                                    // @ts-ignore
                                     setImagePreview(URL.createObjectURL(img))
+                                    // @ts-ignore
                                     return setImage(img);
                                 }}
                                 />
