@@ -2,24 +2,32 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
 import jwt_decode from 'jwt-decode';
+import { JWTPayloadTypes, UserTypes } from '../../../services/data-types';
+import { useRouter } from 'next/dist/client/router';
 
 export default function Auth() {
     const [isLogin, setIsLogin] = useState(false);
     const [user, setUser] = useState({
         avatar: "",
     });
+    const router = useRouter();
     useEffect(() => {
         const token = Cookies.get('token');
         if(token) {
             const jwtToken = atob(token);
-            const payload = jwt_decode(jwtToken);
-            const user = payload.player;
+            const payload: JWTPayloadTypes = jwt_decode(jwtToken);
+            const user: UserTypes = payload.player;
             const IMG = process.env.NEXT_PUBLIC_IMG;
             user.avatar = `${IMG}/${user.avatar}`;
             setIsLogin(true)
             setUser(user);
         }
     }, []);
+    const onLogout = () => {
+        Cookies.remove('token');
+        router.push('/');
+        setIsLogin(false);
+    }
     if(isLogin){
         return (
             <li className="nav-item my-auto dropdown d-flex">
@@ -36,7 +44,9 @@ export default function Auth() {
                     <li><Link href="/"><a className="dropdown-item text-lg color-palette-2" href="/#">Wallet</a></Link></li>
                     <li><Link href="/member/edit-profile"><a className="dropdown-item text-lg color-palette-2" href="/#">Account Settings</a></Link>
                     </li>
-                    <li><Link href="/sign-in"><a className="dropdown-item text-lg color-palette-2" href="/#">Log Out</a></Link></li>
+                    <li onClick={onLogout}><a className="dropdown-item text-lg color-palette-2" href="/#">
+                        Log Out
+                    </a></li>
                 </ul>
             </div>
         </li>
