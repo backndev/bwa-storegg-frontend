@@ -4,7 +4,7 @@ import PaymentItem from "./PaymentItem"
 
 interface TopUpFormProps {
     nominals: NominalsTypes[];
-    payments: PaymentTypes[]
+    payments: PaymentTypes[];
 }
 
 export default function TopUpForm(props: TopUpFormProps) {
@@ -21,11 +21,11 @@ export default function TopUpForm(props: TopUpFormProps) {
                             <p className="text-lg fw-medium color-palette-1 mb-md-10 mb-0">Nominal Top Up</p>
                             <div className="row justify-content-between">
                                 {nominals.map(nominal => {
-                                return <NominalItem 
+                                return <NominalItem
                                 key={nominal._id}
-                                _id={nominal._id} 
-                                coinQuantity={nominal.coinQuantity} 
-                                coinName={nominal.coinName} 
+                                _id={nominal._id}
+                                coinQuantity={nominal.coinQuantity}
+                                coinName={nominal.coinName}
                                 price={nominal.price}/>
                                 })}
                                 <div className="col-lg-4 col-sm-6">
@@ -37,9 +37,9 @@ export default function TopUpForm(props: TopUpFormProps) {
                             <fieldset id="paymentMethod">
                                 <div className="row justify-content-between">
                                     {payments.map((payment) => payment.banks.map((bank) => (
-                                            <PaymentItem 
-                                            bankID={bank._id} 
-                                            type={payment.type} 
+                                            <PaymentItem
+                                            bankID={bank._id}
+                                            type={payment.type}
                                             name={bank.nameBank}/>
                                     )))}
                                     <div className="col-lg-4 col-sm-6">

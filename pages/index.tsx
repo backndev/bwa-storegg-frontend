@@ -1,6 +1,3 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
 import { useEffect } from 'react';
 import AOS from 'aos';
 import Navbar from '../components/organisms/Navbar';
@@ -18,7 +15,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <MainBanner />    
+      <MainBanner />
       <TransactionStep />
       <FeaturedGame />
       <Reached />

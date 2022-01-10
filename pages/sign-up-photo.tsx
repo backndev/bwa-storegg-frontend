@@ -6,7 +6,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/dist/client/router';
 
-
 export default function SignUpPhoto() {
     const [categories, setCategories] = useState([]);
     const [favorite, setFavorite] = useState('');
@@ -30,14 +29,12 @@ export default function SignUpPhoto() {
 
     useEffect(() => {
         const getLocalForm = localStorage.getItem('user-form');
-        // @ts-ignore
-        setLocalForm(JSON.parse(getLocalForm));
+        setLocalForm(JSON.parse(getLocalForm!));
     }, []);
 
     const onSubmit = async () => {
         const getLocalForm = await localStorage.getItem('user-form')
-        // @ts-ignore
-        const form = JSON.parse(getLocalForm);
+        const form = JSON.parse(getLocalForm!);
         const data = new FormData();
 
         data.append('image', image);
@@ -51,7 +48,7 @@ export default function SignUpPhoto() {
         data.append('favorite', favorite);
 
         const result = await setSignUp(data);
-        if(result.error === 1) {
+        if(result.error) {
             toast.error("Email ini sudah terdaftar!");
         } else {
             toast.success("Register Berhasil!");
@@ -59,11 +56,7 @@ export default function SignUpPhoto() {
             localStorage.removeItem('user-form');
         }
     }
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
+
     return (
         <section className="sign-up-photo mx-auto pt-lg-227 pb-lg-227 pt-130 pb-50">
         <div className="container mx-auto">
