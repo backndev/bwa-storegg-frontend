@@ -12,7 +12,8 @@ export default function SignUpPhoto() {
     const [image, setImage] = useState('');
     const [imagePreview, setImagePreview] = useState(null);
     const [localForm, setLocalForm] = useState({
-        name: '', email: ''
+        name: '',
+        email: '',
     });
 
     const router = useRouter();
