@@ -10,6 +10,7 @@ export default function Auth() {
     const [user, setUser] = useState({
         avatar: "",
     });
+
     const router = useRouter();
     useEffect(() => {
         const token = Cookies.get('token');
@@ -23,6 +24,7 @@ export default function Auth() {
             setUser(user);
         }
     }, []);
+
     const onLogout = () => {
         Cookies.remove('token');
         router.push('/');
