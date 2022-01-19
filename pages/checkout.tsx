@@ -33,6 +33,7 @@ export default function Checkout(props: CheckoutProps) {
     );
 }
 
+// @ts-ignore
 export async function getServerSideProps({ req }) {
 	const { token } = req.cookies;
 	if(!token) {

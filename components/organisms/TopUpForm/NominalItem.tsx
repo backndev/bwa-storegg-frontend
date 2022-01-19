@@ -35,7 +35,8 @@ export default function NominalItem(props: NominalItemProps) {
                                             prefix="Rp. "
                                             displayType="text"
                                             thousandSeparator="."
-                                            decimalSeparator="," />
+                                            decimalSeparator=","
+																						/>
                                         </p>
                                     </div>
                                 </label>
